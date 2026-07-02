@@ -68,6 +68,12 @@ python detector.py --test -f validation/example.jpg
 
 ## Screenshots
 
+Before: 
+
+<img width="212" height="215" alt="Screenshot 2026-07-02 at 16 29 43" src="https://github.com/user-attachments/assets/4177e4a7-6b77-4f26-9a13-233d8a332f08" />
+
+After: 
+
 <img width="216" height="216" alt="Screenshot 2026-07-02 at 16 20 54" src="https://github.com/user-attachments/assets/92b23f8f-5a88-40e1-a2e4-d1e32e893749" />
 
 ## Technical Concepts Demonsrated and What I learned
@@ -92,20 +98,16 @@ python detector.py --test -f validation/example.jpg
 ## Project Structure
 
 ```text
+
 face-recognizer/
 
 │
-
 ├── detector.py
-
 ├── requirements.txt
-
 ├── README.md
+└── .gitignore
 
-├── .gitignore
-
-└── output/
-```text
+```
 
 ## Acknowledgements
 
