@@ -15,7 +15,7 @@ Path("training").mkdir(exist_ok=True)
 Path("output").mkdir(exist_ok=True)
 Path("validation").mkdir(exist_ok=True)
 
-parser = argparse.ArgumentParser(description="Recognize faces in an image")
+parser = argparse.ArgumentParser(description="Recognise faces in an image")
 parser.add_argument("--train", action="store_true", help="Train on input data")
 parser.add_argument(
     "--validate", action="store_true", help="Validate trained model"
@@ -46,9 +46,11 @@ def encode_known_faces(
     print("Encoding known faces...")
     for filepath in Path("training").glob("*/*"):
         print(f"Processing {filepath}")
-        # found that as part of mac, it creates a hidden file that starts with "._" which is not an image file and will cause an error when trying to load it. So, we skip it.
+        # I found that as part of mac, it creates a hidden file that starts with "._" which is not an image file and will cause an error when trying to load it. So, we skip it.
+        # Skips hidden macOS metadata files
         if filepath.name.startswith("._"):
             continue
+        # Skips non-image files.
         if filepath.suffix.lower() not in valid_extensions:
             continue
         name = filepath.parent.name
@@ -61,7 +63,7 @@ def encode_known_faces(
         for encoding in face_encodings:
             names.append(name)
             encodings.append(encoding)
-    # create a dictionary that puts the names and encodings lists together and denotes which list is which. Then, you use pickle to save the encodings to disk.
+    # create a dictionary that puts the names and encodings lists together and denotes which list is which. Then, pickle is used to save the encodings to output folder.
     name_encodings = {"names": names, "encodings": encodings}
     with encodings_location.open(mode="wb") as f:
         pickle.dump(name_encodings, f)
@@ -105,6 +107,7 @@ def recognize_faces(
 
 
 def _recognize_face(unknown_encoding, loaded_encodings):
+    # who does the face likely belong to
     boolean_matches = face_recognition.compare_faces(
         loaded_encodings["encodings"], unknown_encoding
     )
