@@ -46,7 +46,7 @@ conda install -c conda-forge dlib numpy pillow
 pip install -r requirements.txt
 ```
 
-## How to use
+## Usage
 
 Train the face encoder using known faces:
 
