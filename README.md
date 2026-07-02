@@ -39,10 +39,15 @@ conda create -n face_recognizer python=3.10
 conda activate face_recognizer
 ```
 
-Install dependencies:
+Install Conda packages:
 
 ```bash
 conda install -c conda-forge dlib numpy pillow
+```
+
+Install Python packages:
+
+```bash
 pip install -r requirements.txt
 ```
 
