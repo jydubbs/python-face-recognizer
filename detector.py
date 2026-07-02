@@ -1,5 +1,4 @@
 # detector.py
-# conda activate face_recognizer
 
 from pathlib import Path
 import face_recognition
